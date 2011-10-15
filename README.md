@@ -67,7 +67,7 @@ Credit for the `hash-object` tipoff that this library uses should go to **[Matt 
 Questions, Comments?
 ----------------------------------------------------------------------------------------
 We're always interested in hearing from developers! You can find us at the following channels;
-bugs and such should be filed on the **[GitHub Issue Tracker](https://github.com/myGengo/github-commit-embed) for this 
+bugs and such should be filed on the **[GitHub Issue Tracker](https://github.com/myGengo/github-commit-embed)** for this 
 repo. Pull Requests are welcome!
 
 **[myGengo Devs on Twitter](http://twitter.com/mygengo_dev)**  
