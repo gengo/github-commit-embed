@@ -26,7 +26,7 @@
 		this.fileSHA = options.fileSHA;
 		this.username = options.username;
 		this.reponame = options.reponame;
-		this.node = options.node;		
+		this.node = options.node;
 		return this;
 	};
 	
@@ -38,16 +38,17 @@
 		username: undefined,
 		reponame: undefined,
 		node: undefined,
+		content: undefined,
 		
 		/**
-		 *	GitHubCommit.embed(optional_callbackfn);
+		 *	GitHubCommit.fetch(optional_callbackfn);
 		 *
 		 *	The actual call that does DOM manipulation; provided separately so people
 		 *	can handle their own unique DOMReady scenarios.
 		 *
 		 *	@returns {object} The GitHubCommit instance this was called on.
 		 */
-		embed: function(optional_callbackfn) {
+		fetch: function(optional_callbackfn) {
 			if(typeof optional_callbackfn === 'function') {
 				this.callbackfn = GitHubCommit.util.bind(this, optional_callbackfn);
 			}
@@ -70,7 +71,7 @@
 			var content = GitHubCommit.util.decodeBase64(resp.data.content.replace(/\n/g, ''));
 			
 			if(typeof this.node === 'string') this.node = document.getElementById(this.node);
-			this.node.innerHTML = content;
+			this.content = content;
 			if(typeof this.callbackfn === 'function') this.callbackfn(content);
 		}
 	};
