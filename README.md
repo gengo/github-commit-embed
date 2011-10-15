@@ -37,7 +37,7 @@ Example Usage
 
 <script type="text/javascript" src="path/to/githubcommitembed.min.js"></script>
 <script type="text/javascript">
-    // Create a new commit to fetch; .embed() actually fires calls (below).
+    // Create a new commit to fetch; .fetch() actually fires calls (below).
     var commit = new GitHubCommit({
         username: 'mygengo',
         reponame: 'mygengo-python',
