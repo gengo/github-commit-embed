@@ -5,6 +5,7 @@ snippets, ideal for developer documentation and examples. Sadly, there currently
 way to embed a specific commit or file from GitHub; they do, however, offer a stellar API, which we
 can use to finagle commits out from within JavaScript in a fairly Gist-like manner.
 
+**[See an Example Setup](http://mygengo.github.com/github-commit-embed/)**  
 
 How This Works
 ----------------------------------------------------------------------------------------
