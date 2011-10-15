@@ -10,7 +10,7 @@
  */
 
 ;(function(w, d, exists) {
-    if(exists === 'undefined') return false;
+    if(exists !== 'undefined') return false;
 
     /**
      *    new GitHubCommitEmbed({});
