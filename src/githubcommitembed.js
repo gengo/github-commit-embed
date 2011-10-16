@@ -24,11 +24,10 @@
      *    @param {node}, DOMNode or str, DOM node reference or if string pass an ID.
      *    @returns {object} A GitHubCommit instance.
      */
-    var GitHubCommit = window.GitHubCommit = function(options) {
+    var GitHubCommit = w.GitHubCommit = function(options) {
         this.fileSHA = options.fileSHA;
         this.username = options.username;
         this.reponame = options.reponame;
-        this.node = options.node;
         return this;
     };
     
@@ -39,7 +38,6 @@
         fileSHA: undefined,
         username: undefined,
         reponame: undefined,
-        node: undefined,
         content: undefined,
         
         /**
@@ -72,7 +70,7 @@
         _parseSHAData: function(resp) {
             var content = GitHubCommit.util.decodeBase64(resp.data.content.replace(/\n/g, ''));
             
-            if(typeof this.node === 'string') this.node = document.getElementById(this.node);
+            if(typeof this.node === 'string') this.node = d.getElementById(this.node);
             this.content = content;
             if(typeof this.callbackfn === 'function') this.callbackfn(content);
         }
@@ -107,7 +105,7 @@
          *    @returns - void (nothing)
          */
         loadScript: function(src, optional_callbackfn) {
-            var newScript = document.createElement("script");
+            var newScript = d.createElement("script");
             newScript.setAttribute('charset', 'utf8');
             newScript.type = "text/javascript";
             newScript.setAttribute("src", src);
@@ -131,20 +129,20 @@
                     if(/loaded|complete/.test(newScript.readyState)) {
                         newScript.onreadystatechange = null;
                         if(typeof optional_callbackfn !== "undefined") optional_callbackfn();
-                        !GitHubCommit.util.DEBUG && newScript && document.body.removeChild(newScript);
+                        !GitHubCommit.util.DEBUG && newScript && d.documentElement.firstChild.removeChild(newScript);
                     }
                 }
             } else {
                 newScript.addEventListener("load", function() {
                     if(typeof optional_callbackfn !== "undefined") optional_callbackfn();
-                    !GitHubCommit.util.DEBUG && newScript && document.body.removeChild(newScript);
+                    !GitHubCommit.util.DEBUG && newScript && d.documentElement.firstChild.removeChild(newScript);
                 }, false);
             }
 
             /**
              *    Install it in an easy to retrieve place (that's also consistent - god forbid, someone might be using frames somewhere...?). 
              */
-            document.body.appendChild(newScript);
+            d.documentElement.firstChild.appendChild(newScript);
         },
 
         /**
@@ -181,20 +179,20 @@
                     /**
                      *    Eh why the hizell not. 
                      */
-                    delete window[callbackGlobalRef];
+                    delete w[callbackGlobalRef];
                 } catch(e) {
                     /**
-                     *    Let it get (hopefully) garbage collected in the future. 
+                     *    Break references for great justice. 
                      */
-                    window[callbackGlobalRef] = null;
+                    w[callbackGlobalRef] = null;
                 }
             });
         
             /**
-               *    We need a global reference to a bound function to execute once the data endpoint downloads
-             *  and fires. (Generally namespace'd [to a degree] with a hint of random-ness).
+             *  We need a global reference to a bound function to execute once the data endpoint downloads
+             *	and fires. (Generally namespace'd [to a degree] with a hint of random-ness).
              */
-            window[callbackGlobalRef] = globalCallback;
+            w[callbackGlobalRef] = globalCallback;
 
             /**
              *    Now that we've got that all in place, we can defer over to loadScript. Note that in a way
@@ -226,7 +224,7 @@
          */ 
         decodeBase64: function(str, utf8decode) {
             /* Original version didn't default to native; fix this. */
-            if(typeof window.atob === 'function') return decodeURIComponent(escape(atob(str))).replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+            if(typeof w.atob === 'function') return decodeURIComponent(escape(atob(str))).replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
 
             var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
             var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
