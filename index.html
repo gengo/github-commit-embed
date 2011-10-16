@@ -77,13 +77,12 @@
 	
 		#content, #generated_content { 
 			font-family: inconsolata, monospace; 
-			width: 452px;
+			width: 464px;
 			border: 1px solid #c9c9c9;
 			background-color: ghostWhite; /* wtf? XD */
 			float: left;
 			margin-top: 16px;
 			margin-bottom: 16px;
-			padding: 5px 7px;
 			-webkit-border-radius: 2px; 
 			-moz-border-radius: 2px; 
 			border-radius: 2px;
@@ -113,6 +112,21 @@
 			height: 40px;
 			background: transparent url('loading.gif') no-repeat top left;
 		}
+
+		.code_title { 
+			display: block; 
+			width: 452px;
+			background-color: #195F7F; 
+			-moz-border-radius: 2px 2px 0 0;
+			-webkit-border-radius: 2px 2px 0 0;
+			border-radius: 2px 2px 0 0;
+			color: #dbebf2;
+			padding: 5px 7px;
+			margin: -1px 0 0 -1px;
+		}
+		.code_title a, .code_title a:visited { color: #dbebf2; text-decoration: none; }
+		.code_title a:hover { text-decoration: underline; }
+		pre { padding: 5px 7px; }
 	</style>
 	<link href="http://yandex.st/highlightjs/6.1/styles/github.min.css" rel="stylesheet" type="text/css">	
 </head>
@@ -127,13 +141,15 @@
 		</p>
 	
 		<p>
-			This library is open source and released under an MIT-style license; full documentation and examples can be found over at <a href="http://github.com/myGengo/github-commit-embed" title="github-commit-embed - Embed GitHub Commits/Files with Javascript" target="_blank">the github-commit-embed repository</a>. We love pull requests!
+			This library is open source and released under an MIT-style license; full documentation and examples can be found over at <a href="http://github.com/myGengo/github-commit-embed" title="github-commit-embed - Embed GitHub Commits/Files with Javascript" target="_blank">the github-commit-embed repository</a>. We love pull requests! 
+			You can also find us over on <a href="http://twitter.com/mygengo_dev" title="myGengo Developers on Twitter" target="_blank">Twitter</a>.
 		</p>
 	</div>
 	
 	<button id="fetchCommit">Run Demo Code</button>
 	
 	<div id="content">
+	<span class="code_title">Example github-commit-embed code. Pulls down a commit!</span>
 <pre id="src_code" class="brush: js;">&lt;pre id="code_block" class="..."&gt;&lt;/pre&gt;
 
 &lt;script src="/path/to/githubcommitembed.min.js"&gt;&lt;/script&gt;
@@ -152,6 +168,7 @@
 </div>
 
 <div id="generated_content">
+<span class="code_title"><a href="https://github.com/myGengo/mygengo-python/blob/master/examples/getServiceLanguages.py" target="_blank">mygengo-python/getServiceLanguages.py</a></span>
 <pre id="code_block" class="brush: py"></pre>
 </div>
 
