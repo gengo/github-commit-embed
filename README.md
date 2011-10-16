@@ -59,7 +59,7 @@ Example Usage
 
 Why Does This Exist?
 ----------------------------------------------------------------------------------------
-At myGengo, we'd prefer to not have to maintain separate Gist-embeds for each of our API
+At **[myGengo](http://mygengo.com/)**, we'd prefer to not have to maintain separate Gist-embeds for each of our API
 repositories; we embed all our examples into our API documentation, though, so we wanted to
 be able to re-use the same content whereever possible. Thus, this exists.
 
