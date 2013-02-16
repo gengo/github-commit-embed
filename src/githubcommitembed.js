@@ -28,6 +28,8 @@
         this.fileSHA = options.fileSHA;
         this.username = options.username;
         this.reponame = options.reponame;
+        this.filePath = options.filePath;
+        this.ref = options.ref;
         return this;
     };
     
@@ -39,6 +41,8 @@
         username: undefined,
         reponame: undefined,
         content: undefined,
+        filePath: undefined,
+        ref: "master",
         
         /**
          *    GitHubCommit.fetch(optional_callbackfn);
@@ -54,7 +58,16 @@
             }
             
             /* String concatenation is ugly. */
-            var ghurl = ['https://api.github.com/repos/',this.username,'/',this.reponame,'/git/blobs/',this.fileSHA].join('');
+            var ghurl = '';
+            
+            if(this.fileSHA === undefined){
+               ghurl = ['https://api.github.com/repos/',this.username,'/',this.reponame,'/contents/',this.filePath,'?ref=', this.ref].join('');
+
+            }
+            else{
+               ghurl = ['https://api.github.com/repos/',this.username,'/',this.reponame,'/git/blobs/',this.fileSHA,'?ref=', this.ref].join('');
+            }
+       console.log(ghurl);
             GitHubCommit.util.jsonp(ghurl, this._parseSHAData, this);
             return this;
         },
